@@ -24,4 +24,11 @@ steps:
   inputs:
     Contents: '**/*.war'
     TargetFolder: '$(build.artifactstagingdirectory)'
-- script: ls 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'ashuwar'
+    publishLocation: 'Container'
+- script: | 
+    ls -a
+    cat /etc/os-release
